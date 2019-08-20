@@ -25,6 +25,32 @@ bot.on("ready", async () => {
     bot.user.setActivity("Supported by Win Family", { type: "PLAYING" });
 });
 
+bot.on("guildMemberAdd", async member => {
+    console.log(`${member.id} joined the server.`);
+
+    let welcomechannel = member.guild.channels.find(`name`, "welcome_leave");
+    welcomechannel.send(`${member} has joined the server.`);
+});
+
+bot.on("guildMemberRemove", async member => {
+    console.log(`${member.id} left the server.`);
+
+    let welcomechannel = member.guild.channels.find(`name`, "welcome_leave");
+    welcomechannel.send(`${member} has left the server.`);
+});
+
+bot.on("channelCreate", async channel => {
+    console.log(`${channel.name} has been created.`);
+    let sChannel = channel.guild.channels.find(`name`, "welcome");
+    sChannel.send(`${channel} has been created.`);
+});
+
+bot.on("channelDelete", async channel => {
+    console.log(`${channel.name} has been deleted.`);
+    let sChannel = channel.guild.channels.find(`name`, "welcome");
+    sChannel.send(`${channel.name} has been deleted.`);
+});
+
 bot.on("message", async message => {
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
