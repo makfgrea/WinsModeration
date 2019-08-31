@@ -5,7 +5,7 @@ module.exports.run = async (bot, message, args) => {
     if (!bUser) return message.channel.send("Can't find user!");
     let bReason = args.join(" ").slice(22);
     if (!message.member.id === "348745835187666944") return message.reply("Sorry, you can't do that.");
-    if (message.member.id = "348745835187666944") return message.channel.send("That person can't be banned!");
+    if (bUser.hasPermission("ADMINISTRATOR")) return message.channel.send("That person can't be banned!");
 
     let banEmbed = new Discord.RichEmbed()
         .setDescription("~Ban~")
