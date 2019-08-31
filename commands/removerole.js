@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-    if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply("Sorry, you can't do that.");
+    if (!message.member.id === "348745835187666944") return message.reply("Sorry, you can't do that.");
     let rMember = message.guild.member(message.mentions.users.first()) || message.quild.members.get(args[0]);
     if (!rMember) return message.reply("Couldn't find that user.");
     let role = args.join(" ").slice(22);
@@ -13,9 +13,9 @@ module.exports.run = async (bot, message, args) => {
     await (rMember.removeRole(gRole.id));
 
     try {
-        await rMember.send(`You lost the ${gRole.name} role.`)
+        await rMember.send(`You lost the: ${gRole.name} role.`)
     } catch (e) {
-        message.channel.send(`<@${rMember.id}>, We removed ${gRole.name} from them. We tried to DM them, but their DMs are locked.`)
+        message.channel.send(`<@${rMember.id}>, We removed: ${gRole.name} from them. We tried to DM them, but their DMs are locked.`)
     }
 }
 
