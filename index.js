@@ -2,7 +2,8 @@ const botconfig = require("./botconfig.json");
 const tokenfile = require("./token.json");
 const Discord = require("discord.js");
 const fs = require("fs");
-const bot = new Discord.Client({ disableEveryone: true });
+const bot = new Discord.Client({ disableEveryone: false })
+const commands = new Map();
 bot.commands = new Discord.Collection();
 
 fs.readdir("./commands/", (err, files) => {
@@ -22,32 +23,32 @@ fs.readdir("./commands/", (err, files) => {
 
 bot.on("ready", async () => {
     console.log(`${bot.user.username} is online on ${bot.guilds.size} servers!`);
-    bot.user.setActivity("Supported by Win Family", { type: "PLAYING" });
+    bot.user.setActivity("Created by Makar Lyzhnik | Michael Lucifer", { type: "PLAYING" });
 });
 
 bot.on("guildMemberAdd", async member => {
     console.log(`${member.id} joined the server.`);
 
-    let welcomechannel = member.guild.channels.find(`name`, "welcome_leave");
+    let welcomechannel = member.guild.channels.find(`name`, "bot-spam");
     welcomechannel.send(`${member} has joined the server.`);
 });
 
 bot.on("guildMemberRemove", async member => {
     console.log(`${member.id} left the server.`);
 
-    let welcomechannel = member.guild.channels.find(`name`, "welcome_leave");
+    let welcomechannel = member.guild.channels.find(`name`, "bot-spam");
     welcomechannel.send(`${member} has left the server.`);
 });
 
 bot.on("channelCreate", async channel => {
     console.log(`${channel.name} has been created.`);
-    let sChannel = channel.guild.channels.find(`name`, "welcome");
+    let sChannel = channel.guild.channels.find(`name`, "bot-spam");
     sChannel.send(`${channel} has been created.`);
 });
 
 bot.on("channelDelete", async channel => {
     console.log(`${channel.name} has been deleted.`);
-    let sChannel = channel.guild.channels.find(`name`, "welcome");
+    let sChannel = channel.guild.channels.find(`name`, "bot-spam");
     sChannel.send(`${channel.name} has been deleted.`);
 });
 
