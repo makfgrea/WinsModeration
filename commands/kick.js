@@ -4,8 +4,8 @@ module.exports.run = async (bot, message, args) => {
     let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if (!kUser) return message.channel.send("Can't find user!");
     let kReason = args.join(" ").slice(22);
-    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Error!")
-    if (kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be kicked!");
+    if (!message.member.id === "348745835187666944") return message.reply("Sorry, you can't do that.");
+    if (kUser.hasPermission("ADMINISTRATOR")) return message.channel.send("That person can't be kicked!");
 
     let kickEmbed = new Discord.RichEmbed()
         .setDescription("~Kick~")
@@ -16,7 +16,7 @@ module.exports.run = async (bot, message, args) => {
         .addField("Time", message.createdAt)
         .addField("Reason", kReason);
 
-    let kickChannel = message.guild.channels.find(`name`, "incidents");
+    let kickChannel = message.guild.channels.find(`name`, "bot-spam");
     if (!kickChannel) return message.channel.send("Can't find incidents channel.");
 
     message.guild.member(kUser).kick(kReason);
