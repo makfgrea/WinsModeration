@@ -6,8 +6,9 @@ module.exports.run = async (bot, message, args) => {
         .setDescription("Bot Information")
         .setColor("#4842f5")
         .setThumbnail(bicon)
-        .addField("Bot Name", bot.user.username)
-        .addField("Created On", bot.user.createdAt);
+        .addField("Bot Name:", bot.user.username)
+        .addField("Created On:", bot.user.createdAt)
+        .addField("Developed by:", "https://vk.com/makarkk");
 
     return message.channel.send(botembed);
 }
