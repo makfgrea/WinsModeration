@@ -2,8 +2,6 @@
 
 Discord-bot for easy moderation of your servers.
 
-Created with free community code support [{TheSourceCode}](https://www.youtube.com/channel/UCNXt2MrZaqfIBknamqwzeXA).
-
 ## Requirements
 * [Discord.js](https://discord.js.org/#/);
 * [FS](https://nodejs.org/api/fs.html);
